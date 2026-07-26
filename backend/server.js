@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/auth');
+const uploadRoutes = require('./routes/upload');
 const projectRoutes = require('./routes/projects');
 const aboutRoutes = require('./routes/about');
 const app = express();
@@ -11,6 +12,7 @@ app.use(cors({
   origin: process.env.CLIENT_URL,
   credentials: true,
 }));
+app.use('/api/upload', uploadRoutes);
 app.use(express.json());
 app.use(cookieParser());
 connectDB();
