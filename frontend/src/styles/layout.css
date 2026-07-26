@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Layout primitives — Nav, Footer, PageWrapper.
+   Import once, globally, in main.jsx: import './styles/layout.css'
+   ========================================================================== */
+
+/* ---- Nav ---- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-raised);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav__inner {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding-inline: var(--content-padding-inline);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+}
+
+.nav__logo:hover {
+  color: var(--color-accent);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  color: var(--color-text-muted);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid transparent;
+  transition: color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.nav__link:hover {
+  color: var(--color-text);
+}
+
+.nav__link--active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ---- Footer ---- */
+.footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-raised);
+  margin-top: var(--space-16);
+}
+
+.footer__inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-8) var(--content-padding-inline);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.footer__meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+.footer__links {
+  display: flex;
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__link {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-decoration: none;
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.footer__link:hover {
+  color: var(--color-accent);
+}
+
+/* ---- PageWrapper ---- */
+.page-wrapper {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper__content {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-10) var(--content-padding-inline);
+}
+
+/* Narrower reading measure for text-heavy pages (About, WorkDetail body) */
+.page-wrapper__content--narrow {
+  max-width: 42rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .nav__links {
+    gap: var(--space-4);
+  }
+
+  .page-wrapper__content {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .footer__inner {
+    padding: var(--space-6) var(--space-4);
+  }
+}
